@@ -38,16 +38,16 @@ def call(Map config = [:]) {
             fi
 
             if git diff --quiet; then
-                echo "✅ No changes to commit."
-            else
-                git add ${manifestsPath}/*.yaml
-                git commit -m "Update image tags to ${imageTag} and domain [ci skip]"
+    echo "✅ No changes to commit."
+else
+    git add ${manifestsPath}/*.yaml
+    git commit -m "Update image tags to ${imageTag} and domain [ci skip]"
 
-                # Push changes to your GitHub repo
-                git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/sureshb987/tws-e-commerce-app_hackathon.git
-                git push origin HEAD:${gitBranch}
-                echo "✅ Changes pushed to GitHub: sureshb987/tws-e-commerce-app_hackathon"
-            fi
+    # ✅ Push to your own repo
+    git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/DevSecOps-Project-Brillquest/tws-e-commerce-app_hackathon.git
+    git push origin HEAD:${gitBranch}
+fi
+
         """
     }
 }
